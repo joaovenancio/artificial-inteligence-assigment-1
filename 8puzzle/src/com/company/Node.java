@@ -63,7 +63,7 @@ public class Node {
         }
     }
 
-    //99 ins the null vlaue
+    //99 ins the null value
     public int[] findNullLocation () {
         for (int contLine = 0; contLine < 3; contLine++) {
             for (int cont = 0; cont < 3; cont++) {
