@@ -5,15 +5,15 @@ import java.util.List;
 public class Node {
     //Atr
     private int[][] state;
-    private List<Node> pathway;
+    private Node father;
     private List<Node> childs;
     private int cost;
     private int level;
 
     //Cons
-    public Node(int[][] state, List<Node> pathway) {
+    public Node(int[][] state, Node father) {
         this.state = state;
-        this.pathway = pathway;
+        this.father = father;
     }
 
     //Met
@@ -25,12 +25,12 @@ public class Node {
         this.state = state;
     }
 
-    public List getPathway() {
-        return pathway;
+    public Node getPathway() {
+        return father;
     }
 
-    public void setPathway(List pathway) {
-        this.pathway = pathway;
+    public void setPathway(Node father) {
+        this.father = father;
     }
 
     public List getChilds() {
@@ -63,11 +63,11 @@ public class Node {
         }
     }
 
-    //99 ins the null value
+    //0 ins the null value
     public int[] findNullLocation () {
         for (int contLine = 0; contLine < 3; contLine++) {
             for (int cont = 0; cont < 3; cont++) {
-                if (this.state[contLine][cont] == 99) {
+                if (this.state[contLine][cont] == 0) {
                     int[] nullLocation = new int[]{contLine, cont};
                     return nullLocation;
                 }
