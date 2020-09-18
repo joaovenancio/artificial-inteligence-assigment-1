@@ -11,6 +11,8 @@ public class Node {
     private ArrayList<Node> childs;
     private int cost;
     private int level;
+    //Pré-defined nodes:
+    public static final int[][] objectiveNode = {{1,2,3},{4,5,6},{7,8,0}};
 
     //Cons
     public Node(int[][] state, Node father) {
@@ -377,5 +379,33 @@ public class Node {
         }
 
         return copiedState;
+    }
+
+    public boolean isSameState(int[][] state) {
+        boolean foundSomethingDifferent = false;
+
+        for (int line = 0; line < 3 && !foundSomethingDifferent; line++) {
+            for (int column = 0; column < 3 && !foundSomethingDifferent; column++) {
+                if (!(state[line][column] == this.state[line][column])) {
+                    foundSomethingDifferent = true;
+                    break;
+                }
+            }
+        }
+
+        if (foundSomethingDifferent) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    public boolean isObjectiveNode () {
+        if (this.isSameState(Node.objectiveNode)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
