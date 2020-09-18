@@ -8,7 +8,7 @@ public class Tree {
 
     //Cons
     public Tree(int[][] initialState) {
-        this.root = new Node(initialState, new ArrayList<Node>());
+        this.root = new Node(initialState, null);
     }
 
     //Met
