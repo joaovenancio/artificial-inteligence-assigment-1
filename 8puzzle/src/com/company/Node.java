@@ -3,6 +3,8 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.Collections;
+import java.util.Arrays;
 
 public class Node {
     //Atr
@@ -29,6 +31,26 @@ public class Node {
         this.childs = new ArrayList<Node>();
         this.cost = 0;
         this.level = level;
+    }
+
+    public int[][] randomBoard() {
+        int[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        ArrayList<int> numList = new ArrayList<>();
+        Collections.addAll(numList, numArray)
+        Collections.shuffle(numList);
+
+        board = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ];
+
+        for(int i = 0, i <= 3, i++) {
+            for(int j = 0, j <= 3, j++) {
+                board[i, j] = numList.pop();
+            }
+        }
+        return board;
     }
 
     //Met
