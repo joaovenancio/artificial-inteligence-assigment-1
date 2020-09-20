@@ -65,6 +65,7 @@ public class EightPuzzle {
                     } else { //If it is, return everything that the assigment wants:
                         isObjectiveNodeFound = true;
                         System.out.println("Achou");
+                        System.out.println(auxNode.getLevel());
 
                         for (int line = 0; line < 3; line++) {
                             for (int column = 0; column < 3; column++) {
