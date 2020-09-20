@@ -33,21 +33,24 @@ public class Node {
         this.level = level;
     }
 
+
     public int[][] randomBoard() {
         Integer[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
         ArrayList<Integer> numList = new ArrayList<>();
-        Collections.addAll(numList, numArray)
+        Collections.addAll(numList, numArray);
         Collections.shuffle(numList);
 
-        int[] board = {
+        int[][] board = {
             {0, 0, 0},
             {0, 0, 0},
             {0, 0, 0}
         };
+        int controler = 8;
 
-        for(int i = 0, i <= 3, i++) {
-            for(int j = 0, j <= 3, j++) {
-                board[i, j] = numList.pop();
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                board[i][j] = numList.remove(controler);
+                controler--;
             }
         }
         return board;
