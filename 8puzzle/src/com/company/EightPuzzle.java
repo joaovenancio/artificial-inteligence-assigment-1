@@ -64,8 +64,10 @@ public class EightPuzzle {
                         }
                     } else { //If it is, return everything that the assigment wants:
                         isObjectiveNodeFound = true;
-                        System.out.println("Achou");
-                        System.out.println(auxNode.getLevel());
+                        System.out.println("O total de nodos visitados: " + this.visitedNodes.size());
+                        System.out.println("O total de nodos criados: " + this.visitedNodes.size() + this.openNodes.size());
+                        System.out.println("O maior tamanho da fronteira durante a busca: N/A"); //Fazer
+                        System.out.println("O tamanho do caminho: " + auxNode.getLevel());
 
                         for (int line = 0; line < 3; line++) {
                             for (int column = 0; column < 3; column++) {
