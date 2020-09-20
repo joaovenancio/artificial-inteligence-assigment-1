@@ -34,8 +34,8 @@ public class Node {
     }
 
     public int[][] randomBoard() {
-        int[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-        ArrayList<int> numList = new ArrayList<>();
+        Integer[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        ArrayList<Integer> numList = new ArrayList<>();
         Collections.addAll(numList, numArray)
         Collections.shuffle(numList);
 
