@@ -99,6 +99,14 @@ public class EightPuzzle {
 
     }
 
+    public void resolveQ2(int[][] initialState) {
+
+    }
+
+    public void resolveQ3(int[][] initialState) {
+
+    }
+
     public void test () {
         Tree tree = new Tree(new int[][]{{4,7,3}, {8,2,5}, {1,6,0}});
         int[][] test = tree.getRoot().copyState(tree.getRoot().getState());
