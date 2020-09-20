@@ -34,9 +34,9 @@ public class Node {
     }
 
 
-    public int[][] randomBoard() {
+    public static int[][] randomBoard() {
         Integer[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-        ArrayList<Integer> numList = new ArrayList<>();
+        ArrayList<Integer> numList = new ArrayList();
         Collections.addAll(numList, numArray);
         Collections.shuffle(numList);
 
@@ -53,6 +53,14 @@ public class Node {
                 controler--;
             }
         }
+
+//        for (int line = 0; line < 3; line++) {
+//            for (int column = 0; column < 3; column++) {
+//                System.out.print(board[line][column]);
+//            }
+//            System.out.println();
+//        }
+
         return board;
     }
 

@@ -62,7 +62,9 @@ public class EightPuzzle {
                         Stack<Node> generatedChilds = auxNode.generateChilds();
                         int stackLenght = generatedChilds.size();
                         for (int i = 0; i < stackLenght; i++) {
-                            this.openNodes.add(generatedChilds.pop());
+                            Node popedChild = generatedChilds.pop();
+                            this.openNodes.add(popedChild);
+                            System.out.println(popedChild.getLevel());
                         }
                         //Compare to find the largest frontier size:
                         if (this.maxFrontierSize < this.openNodes.size()) {
