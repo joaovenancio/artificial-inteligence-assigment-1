@@ -8,12 +8,14 @@ public class EightPuzzle {
     private static EightPuzzle instance;
     private ArrayList<Node> openNodes;
     private ArrayList<Node> visitedNodes;
+    private int maxFrontierSize;
 
     //Cons
     public EightPuzzle() {
         instance = this;
         this.openNodes = new ArrayList<Node>();
         this.visitedNodes = new ArrayList<Node>();
+        this.maxFrontierSize = 1;
     }
 
     //Met
@@ -62,13 +64,21 @@ public class EightPuzzle {
                         for (int i = 0; i < stackLenght; i++) {
                             this.openNodes.add(generatedChilds.pop());
                         }
+                        //Compare to find the largest frontier size:
+                        if (this.maxFrontierSize < this.openNodes.size()) {
+                            this.maxFrontierSize = this.openNodes.size();
+                        }
                     } else { //If it is, return everything that the assigment wants:
                         isObjectiveNodeFound = true;
+                        System.out.println("########################################################################");
+                        System.out.println("#                               8Puzzle                                #");
+                        System.out.println("########################################################################");
                         System.out.println("O total de nodos visitados: " + this.visitedNodes.size());
-                        System.out.println("O total de nodos criados: " + this.visitedNodes.size() + this.openNodes.size());
-                        System.out.println("O maior tamanho da fronteira durante a busca: N/A"); //Fazer
+                        System.out.println("O total de nodos criados: " + (this.visitedNodes.size() + this.openNodes.size()));
+                        System.out.println("O maior tamanho da fronteira durante a busca: " + this.maxFrontierSize);
                         System.out.println("O tamanho do caminho: " + auxNode.getLevel());
-
+                        System.out.println("########################################################################");
+                        System.out.println();
                         for (int line = 0; line < 3; line++) {
                             for (int column = 0; column < 3; column++) {
                                 System.out.print(auxNode.getState()[line][column]);
