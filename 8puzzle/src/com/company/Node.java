@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import java.util.Collections;
-import java.util.Arrays;
 
 public class Node {
     //Atr
@@ -54,12 +53,15 @@ public class Node {
             }
         }
 
-//        for (int line = 0; line < 3; line++) {
-//            for (int column = 0; column < 3; column++) {
-//                System.out.print(board[line][column]);
-//            }
-//            System.out.println();
-//        }
+        System.out.println("Matriz gerada:");
+        System.out.println();
+        for (int line = 0; line < 3; line++) {
+            for (int column = 0; column < 3; column++) {
+                System.out.print(board[line][column]);
+            }
+            System.out.println();
+        }
+        System.out.println();
 
         return board;
     }
@@ -73,11 +75,11 @@ public class Node {
         this.state = state;
     }
 
-    public Node getPathway() {
+    public Node getFather() {
         return father;
     }
 
-    public void setPathway(Node father) {
+    public void setFather(Node father) {
         this.father = father;
     }
 
@@ -448,5 +450,45 @@ public class Node {
         } else {
             return false;
         }
+    }
+
+    public void printPathway () {
+        boolean haveFatherNode;
+        Node auxNode = this;
+        Stack<Node> nodesStack = new Stack();
+
+        if (this.getFather() != null) {
+            haveFatherNode = true;
+        } else {
+            haveFatherNode = false;
+        }
+
+        while (haveFatherNode) {
+            //Print node:
+            nodesStack.push(auxNode);
+            //Get next node:
+            auxNode = auxNode.getFather();
+            if (auxNode.getFather() != null) {
+                haveFatherNode = true;
+            } else {
+                haveFatherNode = false;
+            }
+        }
+        //Put the last one in the stack:
+        nodesStack.push(auxNode);
+        //Print them in the correct oreder:
+        while (nodesStack.size() != 0) {
+            nodesStack.pop().printNode();
+        }
+    }
+
+    public void printNode () {
+        for (int line = 0; line < 3; line++) {
+            for (int column = 0; column < 3; column++) {
+                System.out.print(this.getState()[line][column]);
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }

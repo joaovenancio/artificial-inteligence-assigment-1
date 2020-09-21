@@ -43,7 +43,12 @@ public class EightPuzzle {
             //Initialize control variables:
             boolean nodeAlreadyVisited = false;
             //Get the first node
-            Node auxNode = this.openNodes.get(0);
+            Node auxNode;
+            try {
+                auxNode = this.openNodes.get(0);
+            } catch (java.lang.IndexOutOfBoundsException ex) {
+                auxNode = null;
+            }
             if (auxNode != null) {
                 this.openNodes.remove(auxNode);
                 //See if this node was already traveled by the algorithm:
@@ -64,7 +69,7 @@ public class EightPuzzle {
                         for (int i = 0; i < stackLenght; i++) {
                             Node popedChild = generatedChilds.pop();
                             this.openNodes.add(popedChild);
-                            System.out.println(popedChild.getLevel());
+                            //System.out.println(popedChild.getLevel()); //Prints the level, for debugging
                         }
                         //Compare to find the largest frontier size:
                         if (this.maxFrontierSize < this.openNodes.size()) {
@@ -80,20 +85,28 @@ public class EightPuzzle {
                         System.out.println("O maior tamanho da fronteira durante a busca: " + this.maxFrontierSize);
                         System.out.println("O tamanho do caminho: " + auxNode.getLevel());
                         System.out.println("########################################################################");
+                        System.out.println("Caminho percorrido:");
                         System.out.println();
-                        for (int line = 0; line < 3; line++) {
-                            for (int column = 0; column < 3; column++) {
-                                System.out.print(auxNode.getState()[line][column]);
-                            }
-                            System.out.println();
-                        }
-
+                        auxNode.printPathway();
+                        System.out.println("########################################################################");
                     }
                 } else {
                     continue;
                 }
 
 
+            } else { //If there is no one
+                System.out.println("########################################################################");
+                System.out.println("#                               8Puzzle                                #");
+                System.out.println("########################################################################");
+                System.out.println("Erro: matriz inicial insolucionável.");
+                System.out.println("O total de nodos visitados: " + this.visitedNodes.size());
+                System.out.println("O total de nodos criados: " + (this.visitedNodes.size() + this.openNodes.size()));
+                System.out.println("O maior tamanho da fronteira durante a busca: " + this.maxFrontierSize);
+                System.out.println("Matriz inicial:");
+                System.out.println();
+                tree.getRoot().printNode();
+                System.out.println("########################################################################");
             }
         }
 
