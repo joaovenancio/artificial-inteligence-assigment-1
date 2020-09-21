@@ -14,6 +14,7 @@ public class Node {
     private int level;
     //Pré-defined nodes:
     public static final int[][] objectiveNode = {{1,2,3},{4,5,6},{7,8,0}};
+    public static final int[][] testNode1 = {{4,7,3}, {8,2,5}, {1,6,0}};
 
     //Cons
     public Node(int[][] state, Node father) {
