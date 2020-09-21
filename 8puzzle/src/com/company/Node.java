@@ -32,40 +32,6 @@ public class Node {
         this.level = level;
     }
 
-
-    public static int[][] randomBoard() {
-        Integer[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-        ArrayList<Integer> numList = new ArrayList();
-        Collections.addAll(numList, numArray);
-        Collections.shuffle(numList);
-
-        int[][] board = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0}
-        };
-        int controler = 8;
-
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                board[i][j] = numList.remove(controler);
-                controler--;
-            }
-        }
-
-        System.out.println("Matriz gerada:");
-        System.out.println();
-        for (int line = 0; line < 3; line++) {
-            for (int column = 0; column < 3; column++) {
-                System.out.print(board[line][column]);
-            }
-            System.out.println();
-        }
-        System.out.println();
-
-        return board;
-    }
-
     //Met
     public int[][] getState() {
         return state;
@@ -105,6 +71,39 @@ public class Node {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public static int[][] randomBoard() {
+        Integer[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        ArrayList<Integer> numList = new ArrayList();
+        Collections.addAll(numList, numArray);
+        Collections.shuffle(numList);
+
+        int[][] board = {
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+        };
+        int controler = 8;
+
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                board[i][j] = numList.remove(controler);
+                controler--;
+            }
+        }
+
+        System.out.println("Matriz gerada:");
+        System.out.println();
+        for (int line = 0; line < 3; line++) {
+            for (int column = 0; column < 3; column++) {
+                System.out.print(board[line][column]);
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        return board;
     }
 
     public Stack<Node> generateChilds () {
