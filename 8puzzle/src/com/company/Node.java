@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 import java.util.Collections;
@@ -12,6 +13,7 @@ public class Node {
     private ArrayList<Node> Children;
     private int cost;
     private int level;
+    private static ArrayList<Integer> linearizedBoard;
     //Pré-defined nodes:
     public static final int[][] objectiveNode = {{1,2,3},{4,5,6},{7,8,0}};
     public static final int[][] testNode1 = {{4,7,3}, {8,2,5}, {1,6,0}};
@@ -76,22 +78,23 @@ public class Node {
     }
 
     public static int[][] randomBoard() {
+        System.out.println("Gerando Matriz Aleatória...");
+        System.out.println();
         Integer[] numArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
         ArrayList<Integer> numList = new ArrayList();
         Collections.addAll(numList, numArray);
         Collections.shuffle(numList);
+        linearizedBoard = new ArrayList<Integer>(numList);
 
         int[][] board = {
                 {0, 0, 0},
                 {0, 0, 0},
                 {0, 0, 0}
         };
-        int controler = 8;
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
-                board[i][j] = numList.remove(controler);
-                controler--;
+                board[i][j] = numList.remove(0);
             }
         }
 
@@ -113,7 +116,7 @@ public class Node {
         int[][] board = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
         while(!valid) {
             board = randomBoard();
-            valid = isSolvable(board);
+            valid = isSolvable();
         }
         return board;
     }
@@ -587,46 +590,31 @@ public class Node {
     }
 
     //Taken from: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/#:~:text=It%20is%20not%20possible%20to,odd%20in%20the%20input%20state.&text=The%20second%20example%20has%2011,their%20appearance%20in%20goal%20state.
-    public boolean isSolvable () {
-        int[][] arr = this.getState();
+    public static boolean isSolvable () {
         int invCount = 0;
 
-        for (int i = 0; i < 3 - 1; i++) {
-            for (int j = i + 1; j < 3; j++) {
-                // Value 0 is used for empty space
-                if (arr[j][i] > 0 && arr[j][i] > arr[i][j]) {
+        ArrayList<Integer> numList = linearizedBoard;
+        numList.removeAll(Arrays.asList(0));
+        System.out.println(numList);
+
+        for (int i = 0; i < 7; i++) {
+            // Value 0 is used for empty space
+            for(int j = i; j < 7; j++) {
+                if (numList.get(i) > numList.get(j+1)) {
                     invCount++;
                 }
             }
+           
         }
 
         if(invCount % 2 == 0) {
-            System.out.println("Solucionável");
+            System.out.println("Matriz gerada é Solucionável");
             return true;
         } else {
-            System.out.println("Não solucionável");
+            System.out.println("Matriz gerada é Não solucionável.");
             return false;
         }
     }
 
-    public static boolean isSolvable (int[][] arr) {
-        int invCount = 0;
 
-        for (int i = 0; i < 3 - 1; i++) {
-            for (int j = i + 1; j < 3; j++) {
-                // Value 0 is used for empty space
-                if (arr[j][i] > 0 && arr[j][i] > arr[i][j]) {
-                    invCount++;
-                }
-            }
-        }
-
-        if(invCount % 2 == 0) {
-            System.out.println("Solucionável");
-            return true;
-        } else {
-            System.out.println("Não solucionável");
-            return false;
-        }
-    }
 }

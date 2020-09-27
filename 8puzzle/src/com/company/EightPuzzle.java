@@ -36,15 +36,7 @@ public class EightPuzzle {
         //Create new tree
         Tree tree = new Tree(initialState);
         //Check if is an solvable matrix:
-        boolean isSolvable = false;
-        while (!isSolvable) {
-            if (tree.getRoot().isSolvable()) {
-                isSolvable = true;
-            } else {
-                System.out.println("Gerando nova matriz...");
-                tree.setRoot(new Node(Node.randomBoard(), null));
-            }
-        }
+
         //Initialize control variables:
         boolean isObjectiveNodeFound = false;
         //Start openNodes list:
@@ -139,15 +131,7 @@ public class EightPuzzle {
         //Create new tree
         Tree tree = new Tree(initialState);
         //Check if is an solvable matrix:
-        boolean isSolvable = false;
-        while (!isSolvable) {
-            if (tree.getRoot().isSolvable()) {
-                isSolvable = true;
-            } else {
-                System.out.println("Gerando nova matriz...");
-                tree.setRoot(new Node(Node.randomBoard(), null));
-            }
-        }
+
         //Initialize control variables:
         boolean isObjectiveNodeFound = false;
         //Start openNodes list:
@@ -255,15 +239,7 @@ public class EightPuzzle {
         //Create new tree
         Tree tree = new Tree(initialState);
         //Check if is an solvable matrix:
-        boolean isSolvable = false;
-        while (!isSolvable) {
-            if (tree.getRoot().isSolvable()) {
-                isSolvable = true;
-            } else {
-                System.out.println("Gerando nova matriz...");
-                tree.setRoot(new Node(Node.randomBoard(), null));
-            }
-        }
+
         //Initialize control variables:
         boolean isObjectiveNodeFound = false;
         //Start openNodes list:
