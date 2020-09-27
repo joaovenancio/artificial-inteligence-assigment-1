@@ -9,7 +9,7 @@ public class Node {
     //Atr
     private int[][] state;
     private Node father;
-    private ArrayList<Node> childs;
+    private ArrayList<Node> Children;
     private int cost;
     private int level;
     //Pré-defined nodes:
@@ -21,7 +21,7 @@ public class Node {
     public Node(int[][] state, Node father) {
         this.state = state;
         this.father = father;
-        this.childs = new ArrayList<Node>();
+        this.Children = new ArrayList<Node>();
         this.cost = 0;
         this.level = 0;
     }
@@ -29,7 +29,7 @@ public class Node {
     public Node(int[][] state, Node father, int level) {
         this.state = state;
         this.father = father;
-        this.childs = new ArrayList<Node>();
+        this.Children = new ArrayList<Node>();
         this.cost = 0;
         this.level = level;
     }
@@ -51,12 +51,12 @@ public class Node {
         this.father = father;
     }
 
-    public List getChilds() {
-        return childs;
+    public List getChildren() {
+        return Children;
     }
 
-    public void setChilds(ArrayList<Node> childs) {
-        this.childs = childs;
+    public void setChildren(ArrayList<Node> Children) {
+        this.Children = Children;
     }
 
     public int getCost() {
@@ -118,7 +118,7 @@ public class Node {
         return board;
     }
 
-    public Stack<Node> generateChilds () {
+    public Stack<Node> generateChildren() {
         int[] nullLocation = this.findNullLocation ();
         Stack<Node> result = new Stack();
         int[][] newState;
@@ -135,7 +135,7 @@ public class Node {
 
                          newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -145,7 +145,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -158,7 +158,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -168,7 +168,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //3:
@@ -178,7 +178,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -191,7 +191,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -201,7 +201,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -218,7 +218,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -228,7 +228,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //3:
@@ -238,7 +238,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -251,7 +251,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -261,7 +261,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //3:
@@ -271,7 +271,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //4:
@@ -281,7 +281,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -294,7 +294,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -304,7 +304,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //3:
@@ -314,7 +314,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -331,7 +331,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -341,7 +341,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -354,7 +354,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -364,7 +364,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //3:
@@ -374,7 +374,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;
@@ -387,7 +387,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         //2:
@@ -397,7 +397,7 @@ public class Node {
 
                         newNode = new Node(newState, this, this.level+1);
 
-                        this.getChilds().add(newNode);
+                        this.getChildren().add(newNode);
                         result.push(newNode);
 
                         break;

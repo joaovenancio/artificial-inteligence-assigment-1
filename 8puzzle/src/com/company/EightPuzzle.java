@@ -80,10 +80,10 @@ public class EightPuzzle {
                             System.gc();
                         }
                         this.visitedNodes.add(auxNode);
-                        Stack<Node> generatedChilds = auxNode.generateChilds();
-                        int stackLenght = generatedChilds.size();
+                        Stack<Node> generatedChildren = auxNode.generateChildren();
+                        int stackLenght = generatedChildren.size();
                         for (int i = 0; i < stackLenght; i++) {
-                            Node popedChild = generatedChilds.pop();
+                            Node popedChild = generatedChildren.pop();
                             this.openNodes.add(popedChild);
                             //System.out.println(popedChild.getLevel()); //Prints the level, for debugging
                         }
@@ -165,7 +165,7 @@ public class EightPuzzle {
             }
             if (auxNode != null) {
                 this.openNodes.remove(auxNode);
-                //See if this node was already traveled by the algorithm:
+                //See if this node was already visited by the algorithm:
                 if (this.visitedNodes.size() > 0) {
                     for (Node visitedNode : this.visitedNodes) {
                         if (visitedNode.isSameState(auxNode.getState())) {
@@ -178,10 +178,10 @@ public class EightPuzzle {
                 if (!nodeAlreadyVisited) {
                     if (!(auxNode.isObjectiveNode())) {
                         this.visitedNodes.add(auxNode);
-                        Stack<Node> generatedChilds = auxNode.generateChilds();
-                        int stackLenght = generatedChilds.size();
+                        Stack<Node> generatedChildren = auxNode.generateChildren();
+                        int stackLenght = generatedChildren.size();
                         for (int i = 0; i < stackLenght; i++) {
-                            Node popedChild = generatedChilds.pop();
+                            Node popedChild = generatedChildren.pop();
                             int poppedChildCost = popedChild.calculateHeuristic1();
                             //Sort open nodes list:
                             boolean alreadyAdded = false;
@@ -294,10 +294,10 @@ public class EightPuzzle {
                 if (!nodeAlreadyVisited) {
                     if (!(auxNode.isObjectiveNode())) {
                         this.visitedNodes.add(auxNode);
-                        Stack<Node> generatedChilds = auxNode.generateChilds();
-                        int stackLenght = generatedChilds.size();
+                        Stack<Node> generatedChildren = auxNode.generateChildren();
+                        int stackLenght = generatedChildren.size();
                         for (int i = 0; i < stackLenght; i++) {
-                            Node popedChild = generatedChilds.pop();
+                            Node popedChild = generatedChildren.pop();
                             int poppedChildCost = popedChild.calculateHeuristic2();
                             //Sort open nodes list: - problems:
                             boolean alreadyAdded = false;
@@ -367,7 +367,7 @@ public class EightPuzzle {
 //        Tree tree = new Tree(new int[][]{{4,7,3}, {8,2,5}, {1,6,0}});
 //        int[][] test = tree.getRoot().copyState(tree.getRoot().getState());
 //
-//        Stack stack = tree.getRoot().generateChilds();
+//        Stack stack = tree.getRoot().generateChildren();
 //
 //        //Print node structure:
 //        for (int line = 0; line < 3; line++) {
