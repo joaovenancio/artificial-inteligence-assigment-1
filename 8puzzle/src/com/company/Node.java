@@ -108,6 +108,16 @@ public class Node {
         return board;
     }
 
+    public static int[][] randomInput() {
+        boolean valid = false;
+        int[][] board = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+        while(!valid) {
+            board = randomBoard();
+            valid = isSolvable(board);
+        }
+        return board;
+    }
+
     public Stack<Node> generateChilds () {
         int[] nullLocation = this.findNullLocation ();
         Stack<Node> result = new Stack();
@@ -579,6 +589,27 @@ public class Node {
     //Taken from: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/#:~:text=It%20is%20not%20possible%20to,odd%20in%20the%20input%20state.&text=The%20second%20example%20has%2011,their%20appearance%20in%20goal%20state.
     public boolean isSolvable () {
         int[][] arr = this.getState();
+        int invCount = 0;
+
+        for (int i = 0; i < 3 - 1; i++) {
+            for (int j = i + 1; j < 3; j++) {
+                // Value 0 is used for empty space
+                if (arr[j][i] > 0 && arr[j][i] > arr[i][j]) {
+                    invCount++;
+                }
+            }
+        }
+
+        if(invCount % 2 == 0) {
+            System.out.println("Solucionável");
+            return true;
+        } else {
+            System.out.println("Não solucionável");
+            return false;
+        }
+    }
+
+    public static boolean isSolvable (int[][] arr) {
         int invCount = 0;
 
         for (int i = 0; i < 3 - 1; i++) {
