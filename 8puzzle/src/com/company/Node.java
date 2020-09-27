@@ -15,6 +15,7 @@ public class Node {
     //Pré-defined nodes:
     public static final int[][] objectiveNode = {{1,2,3},{4,5,6},{7,8,0}};
     public static final int[][] testNode1 = {{4,7,3}, {8,2,5}, {1,6,0}};
+    public static final int[][] testNode2 = {{8,7,2}, {5,1,0}, {6,4,3}};
 
     //Cons
     public Node(int[][] state, Node father) {
@@ -490,6 +491,89 @@ public class Node {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public int calculateHeuristic1 () {
+        int inPosition = 8;
+        int outOfPosition = 0;
+        int gameNumber = 1;
+
+        for (int line = 0; line < 3; line++) {
+            for (int column = 0; column < 3; column++) {
+                if (this.getState()[line][column] != 0) {
+                    if (this.getState()[line][column] != gameNumber) {
+                        outOfPosition++;
+                    }
+                }
+                gameNumber++;
+            }
+        }
+
+        int cost = inPosition-outOfPosition;
+        this.setCost(cost);
+        return cost;
+
+    }
+
+    public int calculateHeuristic2 () {
+        int cost = 0;
+
+        for (int line = 0; line < 3; line++) {
+            for (int column = 0; column < 3; column++) {
+
+                int valueLine = 0;
+                int valueColumn = 0;
+
+                switch (this.getState()[line][column]) {
+                    case 1:
+                        valueLine = Math.abs(0 - line);
+                        valueColumn = Math.abs(0 - column);
+                        break;
+
+                    case 2:
+                        valueLine = Math.abs(0 - line);
+                        valueColumn = Math.abs(1 - column);
+                        break;
+
+                    case 3:
+                        valueLine = Math.abs(0 - line);
+                        valueColumn = Math.abs(2 - column);
+                        break;
+
+                    case 4:
+                        valueLine = Math.abs(1 - line);
+                        valueColumn = Math.abs(0 - column);
+                        break;
+
+                    case 5:
+                        valueLine = Math.abs(1 - line);
+                        valueColumn = Math.abs(1 - column);
+                        break;
+
+                    case 6:
+                        valueLine = Math.abs(1 - line);
+                        valueColumn = Math.abs(2 - column);
+                        break;
+
+                    case 7:
+                        valueLine = Math.abs(2 - line);
+                        valueColumn = Math.abs(0 - column);
+                        break;
+
+                    case 8:
+                        valueLine = Math.abs(2 - line);
+                        valueColumn = Math.abs(1 - column);
+                        break;
+                }
+
+                cost = cost + valueLine + valueColumn;
+
+            }
+        }
+
+        this.setCost(cost);
+        return cost;
+
     }
 
     //Taken from: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/#:~:text=It%20is%20not%20possible%20to,odd%20in%20the%20input%20state.&text=The%20second%20example%20has%2011,their%20appearance%20in%20goal%20state.
