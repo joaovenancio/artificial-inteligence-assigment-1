@@ -83,9 +83,9 @@ public class EightPuzzle {
                         Stack<Node> generatedChildren = auxNode.generateChildren();
                         int stackLenght = generatedChildren.size();
                         for (int i = 0; i < stackLenght; i++) {
-                            Node popedChild = generatedChildren.pop();
-                            this.openNodes.add(popedChild);
-                            //System.out.println(popedChild.getLevel()); //Prints the level, for debugging
+                            Node poppedChild = generatedChildren.pop();
+                            this.openNodes.add(poppedChild);
+                            //System.out.println(poppedChild.getLevel()); //Prints the level, for debugging
                         }
                         //Compare to find the largest frontier size:
                         if (this.maxFrontierSize < this.openNodes.size()) {
@@ -181,27 +181,27 @@ public class EightPuzzle {
                         Stack<Node> generatedChildren = auxNode.generateChildren();
                         int stackLenght = generatedChildren.size();
                         for (int i = 0; i < stackLenght; i++) {
-                            Node popedChild = generatedChildren.pop();
-                            int poppedChildCost = popedChild.calculateHeuristic1();
+                            Node poppedChild = generatedChildren.pop();
+                            int poppedChildCost = poppedChild.calculateHeuristic1();
                             //Sort open nodes list:
                             boolean alreadyAdded = false;
                             if (this.openNodes.size() == 0) {
-                                this.openNodes.add(popedChild);
-                                //System.out.println(popedChild.getCost() + "passou");
+                                this.openNodes.add(poppedChild);
+                                //System.out.println(poppedChild.getCost() + "passou");
                             } else {
                                 for (int auxIndex = 0; auxIndex < this.openNodes.size(); auxIndex++) {
                                     if (poppedChildCost >= this.openNodes.get(auxIndex).getCost()){
-                                        this.openNodes.add(auxIndex, popedChild);
+                                        this.openNodes.add(auxIndex, poppedChild);
                                         alreadyAdded = true;
                                         break;
                                     }
                                 }
                                 if (!alreadyAdded) {
-                                    this.openNodes.add(popedChild);
+                                    this.openNodes.add(poppedChild);
                                 }
                             }
 
-                            //System.out.println(popedChild.getLevel()); //Prints the level, for debugging
+                            //System.out.println(poppedChild.getLevel()); //Prints the level, for debugging
                         }
                         //Compare to find the largest frontier size:
                         if (this.maxFrontierSize < this.openNodes.size()) {
@@ -297,27 +297,27 @@ public class EightPuzzle {
                         Stack<Node> generatedChildren = auxNode.generateChildren();
                         int stackLenght = generatedChildren.size();
                         for (int i = 0; i < stackLenght; i++) {
-                            Node popedChild = generatedChildren.pop();
-                            int poppedChildCost = popedChild.calculateHeuristic2();
+                            Node poppedChild = generatedChildren.pop();
+                            int poppedChildCost = poppedChild.calculateHeuristic2();
                             //Sort open nodes list: - problems:
                             boolean alreadyAdded = false;
                             if (this.openNodes.size() == 0) {
-                                this.openNodes.add(popedChild);
-                                //System.out.println(popedChild.getCost() + "passou");
+                                this.openNodes.add(poppedChild);
+                                //System.out.println(poppedChild.getCost() + "passou");
                             } else {
                                 for (int auxIndex = 0; auxIndex < this.openNodes.size(); auxIndex++) {
                                     if (poppedChildCost <= this.openNodes.get(auxIndex).getCost()){
-                                        this.openNodes.add(auxIndex, popedChild);
+                                        this.openNodes.add(auxIndex, poppedChild);
                                         alreadyAdded = true;
                                         break;
                                     }
                                 }
                                 if (!alreadyAdded) {
-                                    this.openNodes.add(popedChild);
+                                    this.openNodes.add(poppedChild);
                                 }
                             }
 
-                            //System.out.println(popedChild.getLevel()); //Prints the level, for debugging
+                            //System.out.println(poppedChild.getLevel()); //Prints the level, for debugging
                         }
                         //Compare to find the largest frontier size:
                         if (this.maxFrontierSize < this.openNodes.size()) {
