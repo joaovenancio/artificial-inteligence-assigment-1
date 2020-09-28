@@ -22,15 +22,15 @@ public class Main {
             int in = input.nextInt();
             switch (in) {
                 case 1:
-                    EightPuzzle.getInstance().resolveQ1(Node.testNode1);
+                    EightPuzzle.getInstance().resolveQ1(Node.randomInput());
                     break;
 
                 case 2:
-                    EightPuzzle.getInstance().resolveQ2(Node.testNode1);
+                    EightPuzzle.getInstance().resolveQ2(Node.randomInput());
                     break;
 
                 case 3:
-                    EightPuzzle.getInstance().resolveQ3(Node.testNode1);
+                    EightPuzzle.getInstance().resolveQ3(Node.randomInput());
                     break;
 
                 case 4:
