@@ -509,7 +509,7 @@ public class Node {
             }
         }
 
-        int cost = inPosition-outOfPosition;
+        int cost = (inPosition-outOfPosition) - this.getLevel();
         this.setCost(cost);
         return cost;
 
@@ -566,7 +566,7 @@ public class Node {
                         break;
                 }
 
-                cost = cost + valueLine + valueColumn;
+                cost = cost + valueLine + valueColumn + this.getLevel();
 
             }
         }

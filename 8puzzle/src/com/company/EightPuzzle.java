@@ -201,7 +201,7 @@ public class EightPuzzle {
                                 }
                             }
 
-                            System.out.println(popedChild.getLevel()); //Prints the level, for debugging
+                            //System.out.println(popedChild.getLevel()); //Prints the level, for debugging
                         }
                         //Compare to find the largest frontier size:
                         if (this.maxFrontierSize < this.openNodes.size()) {
@@ -317,7 +317,7 @@ public class EightPuzzle {
                                 }
                             }
 
-                            System.out.println(popedChild.getLevel()); //Prints the level, for debugging
+                            //System.out.println(popedChild.getLevel()); //Prints the level, for debugging
                         }
                         //Compare to find the largest frontier size:
                         if (this.maxFrontierSize < this.openNodes.size()) {
